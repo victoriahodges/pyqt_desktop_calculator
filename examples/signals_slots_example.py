@@ -3,6 +3,7 @@
 """Signals and slots example."""
 
 import sys
+# from functools import partial
 
 from PyQt6.QtWidgets import (
     QApplication,
@@ -13,11 +14,11 @@ from PyQt6.QtWidgets import (
 )
 
 
-def greet():
+def greet(name):
     if msgLabel.text():
         msgLabel.setText("")
     else:
-        msgLabel.setText("Hello, World!")
+        msgLabel.setText(f"Hello, {name}!")
 
 
 app = QApplication([])
@@ -26,7 +27,8 @@ window.setWindowTitle("Signals and slots")
 layout = QVBoxLayout()
 
 button = QPushButton("Greet")
-button.clicked.connect(greet)
+# button.clicked.connect(partial(greet, "Victoria"))
+button.clicked.connect(lambda: greet("Victoria"))
 
 layout.addWidget(button)
 msgLabel = QLabel("")
