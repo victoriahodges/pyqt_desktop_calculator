@@ -16,3 +16,13 @@ To install dependencies from `Pipfile`, run:
 ```
 pipenv install
 ```
+
+## Usage
+
+To run the Hello World example, enter `pipenv shell` and run:
+
+```
+python hello.py
+```
+
+![Hello, World](docs/hello_world_example.png)
