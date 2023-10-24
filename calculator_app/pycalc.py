@@ -18,9 +18,15 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtGui import QKeySequence
 
 ERROR_MSG = "ERROR"
-WINDOW_SIZE = 235
-DISPLAY_HEIGHT = 35
-BUTTON_SIZE = 40
+WINDOW_SIZE = 400
+DISPLAY_HEIGHT = 60
+BUTTON_SIZE = 70
+KEYBOARD = [
+            ["7", "8", "9", "/", "C"],
+            ["4", "5", "6", "*", "("],
+            ["1", "2", "3", "-", ")"],
+            ["0", "00", ".", "+", "="],
+        ]
 
 
 class PyCalcWindow(QMainWindow):
@@ -46,18 +52,12 @@ class PyCalcWindow(QMainWindow):
     def _createButtons(self):
         self.buttonMap = {}
         buttonsLayout = QGridLayout()
-        keyBoard = [
-            ["7", "8", "9", "/", "C"],
-            ["4", "5", "6", "*", "("],
-            ["1", "2", "3", "-", ")"],
-            ["0", "00", ".", "+", "="],
-        ]
-
-        for row, keys in enumerate(keyBoard):
+        for row, keys in enumerate(KEYBOARD):
             for col, key in enumerate(keys):
                 self.buttonMap[key] = QPushButton(key)
                 self.buttonMap[key].setFixedSize(BUTTON_SIZE, BUTTON_SIZE)
-                self.buttonMap[key].setStyleSheet("background-color: orange")
+                if key == "=":
+                    self.buttonMap[key].setStyleSheet("background-color: orange")
                 self.buttonMap[key].setShortcut(QKeySequence(key))
                 buttonsLayout.addWidget(self.buttonMap[key], row, col)
 
