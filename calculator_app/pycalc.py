@@ -15,6 +15,7 @@ from PyQt6.QtWidgets import (
     QVBoxLayout,
     QWidget
 )
+from PyQt6.QtGui import QKeySequence
 
 ERROR_MSG = "ERROR"
 WINDOW_SIZE = 235
@@ -56,6 +57,8 @@ class PyCalcWindow(QMainWindow):
             for col, key in enumerate(keys):
                 self.buttonMap[key] = QPushButton(key)
                 self.buttonMap[key].setFixedSize(BUTTON_SIZE, BUTTON_SIZE)
+                self.buttonMap[key].setStyleSheet("background-color: orange")
+                self.buttonMap[key].setShortcut(QKeySequence(key))
                 buttonsLayout.addWidget(self.buttonMap[key], row, col)
 
         self.generalLayout.addLayout(buttonsLayout)
